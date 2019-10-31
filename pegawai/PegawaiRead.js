@@ -79,7 +79,12 @@ export default class PegawaiRead extends Component {
           renderSeparator={this.ListViewItemSeparator}
           renderRow={rowData => (
             <Text
-              style={{fontSize: 20, paddingBottom: 10, paddingTop: 10, paddingLeft: 10}}
+              style={{
+                fontSize: 20,
+                paddingBottom: 10,
+                paddingTop: 10,
+                paddingLeft: 10,
+              }}
               onPress={this.getPegawaiFunction.bind(
                 this,
                 rowData.pegawai_id,
