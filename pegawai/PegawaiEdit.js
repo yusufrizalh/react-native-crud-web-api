@@ -60,6 +60,29 @@ export default class PegawaiEdit extends Component {
     this.props.navigation.navigate('PegawaiMain');
   };
 
+  // membuat function untuk menghapus data pegawai
+  deleteDataPegawai = () => {
+    fetch('http://17.17.17.104/my-react-crud/HapusDataPegawai.php', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        pegawai_id: this.state.textInput_ID,
+      }),
+    })
+      .then(response => response.json())
+      .then(responseJson => {
+        Alert.alert(responseJson);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    // redirect kembal ke pegawai main
+    this.props.navigation.navigate('PegawaiMain');
+  };
+
   render() {
     return (
       <View>
@@ -86,6 +109,10 @@ export default class PegawaiEdit extends Component {
 
         <TouchableOpacity activeOpacity={0.5} onPress={this.updateDataPegawai}>
           <Text>Ubah Data Pegawai</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity activeOpacity={0.5} onPress={this.deleteDataPegawai}>
+          <Text>Hapus Data Pegawai</Text>
         </TouchableOpacity>
       </View>
     );
